@@ -1,3 +1,12 @@
+import json
+from prompts.prompt_template import build_prompt
+from ai_chat_helper import ask_ai
+
+#Load course content
+with open("course_content.json") as f:
+    course = json.load(f)
+
+
 # Step 1: Ask some Python questions
 
 score = 0
@@ -32,43 +41,33 @@ print(f"\nYour Python level is: {level}")
 # Suggest topics based on the user's level
 print("\nHere's your personalized Python learning path:")
 
-if level == "Beginner":
-    topics = [
-        "1. Variables and Data Types",
-        "2. Print and Input",
-        "3. If-Else Conditions",
-        "4. Loops (while, for)",
-        "5. Basic Functions"
-    ]
-elif level == "Intermediate":
-    topics = [
-        "1. Functions (parameters, return)",
-        "2. Lists and Dictionaries",
-        "3. File Handling (open, read, write)",
-        "4. Error Handling (try-except)",
-        "5. Working with Modules"
-    ]
-else:  # Advanced
-    topics = [
-        "1. Object-Oriented Programming (Classes & Objects)",
-        "2. Recursion",
-        "3. Generators and Iterators",
-        "4. Decorators",
-        "5. Working with APIs and JSON"
-    ]
+# Show topics based on level
+user_level = level.lower()
+user_name = input("\nBefore we continue, what's your name? ")
 
-# Print the list
-for topic in topics:
-    print(topic)
+for idx, topic in enumerate(course[user_level], start=1):
+    print(f"{idx}. {topic['title']} — {topic['goal']}")
 
+# Step 2: Teach the first topic using prompt engineering
+print("\n🧠 Let's begin learning with the first topic!")
 
-from ai_chat_helper import ask_ai
+first_topic = course[user_level][0]
+prompt = build_prompt(
+    user_level=level,
+    topic_title=first_topic["title"],
+    topic_goal=first_topic["goal"],
+    user_name=user_name
+)
+
+lesson = ask_ai(prompt)
+print("\n📘 AI Tutor says:\n")
+print(lesson)
 
 print("\nNow you can ask Python questions. Type 'exit' to stop.")
 
 while True:
     user_question = input("\nAsk a Python question: ")
-    if user_question.lower() == "exit":
+    if user_question.lower().strip() == "exit":
         print("Goodbye! Happy coding 😊")
         break
 
