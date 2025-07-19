@@ -62,3 +62,16 @@ for topic in topics:
     print(topic)
 
 
+from ai_chat_helper import ask_ai
+
+print("\nNow you can ask Python questions. Type 'exit' to stop.")
+
+while True:
+    user_question = input("\nAsk a Python question: ")
+    if user_question.lower() == "exit":
+        print("Goodbye! Happy coding 😊")
+        break
+
+    answer = ask_ai(user_question)
+    print("\nAI Tutor says:\n")
+    print(answer)
