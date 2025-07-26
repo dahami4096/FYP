@@ -2,6 +2,7 @@ import json
 from prompts.prompt_template import build_prompt
 from ai_chat_helper import ask_ai
 
+
 #Load course content
 with open("course_content.json") as f:
     course = json.load(f)
