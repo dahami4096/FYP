@@ -1,0 +1,18 @@
+{
+  "beginner": [
+    { "title": "Variables and Data Types", "goal": "Learn how to declare and use variables in C" },
+    { "title": "Input and Output", "goal": "Use scanf and printf to get input and display output" },
+    { "title": "If-Else Statements", "goal": "Make decisions using conditional logic" }
+  ],
+  "intermediate": [
+    { "title": "Loops", "goal": "Repeat tasks using for, while, and do-while loops" },
+    { "title": "Functions", "goal": "Break code into reusable functions" },
+    { "title": "Arrays", "goal": "Store and manage lists of data" }
+  ],
+  "advanced": [
+    { "title": "Pointers", "goal": "Understand memory addresses and pointer operations" },
+    { "title": "Dynamic Memory Allocation", "goal": "Use malloc and free for dynamic memory" },
+    { "title": "Structures", "goal": "Group related variables using structs" },
+    { "title": "File Handling", "goal": "Read from and write to files using C" }
+  ]
+}
