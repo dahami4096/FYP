@@ -1,5 +1,5 @@
 # AI-Agent-for-Personalized-learning
 
-##Run GUI
+## Run GUI
 ```bash
  streamlit run gui/app.py 
