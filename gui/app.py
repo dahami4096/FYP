@@ -1,33 +1,24 @@
 import streamlit as st
 
+# Page config
 st.set_page_config(page_title="AI Learning Agent", page_icon="📘", layout="wide")
 
-st.markdown(
-    """
-    <div style='width: 100%; text-align: center; margin-top: 50px;'>
-        <h1 style='font-size: 3rem;'>👋 Welcome to the AI Learning Assistant</h1>
-        <p style='font-size: 1.3rem; max-width: 800px; margin: auto;'>
-            This intelligent assistant is designed to guide you through personalized learning paths,
-            offer interactive support, and adapt to your individual progress. Explore the tools, get feedback, 
-            and take control of your learning journey!
-        </p>
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
-
-#side bar------------------------
-with st.sidebar:
-    st.write("Navigation")
-    if st.button("Home"):
-        st.switch_page("pages/home.py")
-        
-
-st.markdown("<br><br>", unsafe_allow_html=True)
+# Hide sidebar and other elements with CSS
 st.markdown(
     """
     <style>
-    /* Center Streamlit button by making its container a flexbox */
+    /* Hide sidebar */
+    [data-testid="stSidebar"] {
+        display: none;
+    }
+
+    /* Hide the blank left space where sidebar would be */
+    .block-container {
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
+    }
+
+    /* Center Streamlit button */
     div.stButton {
         display: flex !important;
         justify-content: center !important;
@@ -64,5 +55,21 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+# Welcome message
+st.markdown(
+    """
+    <div style='width: 100%; text-align: center; margin-top: 50px;'>
+        <h1 style='font-size: 3rem;'>👋 Welcome to the AI Learning Assistant</h1>
+        <p style='font-size: 1.3rem; max-width: 800px; margin: auto;'>
+            This intelligent assistant is designed to guide you through personalized learning paths,
+            offer interactive support, and adapt to your individual progress. Explore the tools, get feedback, 
+            and take control of your learning journey!
+        </p>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+
+# Button to start
 if st.button("Let's get started"):
     st.switch_page("pages/home.py")

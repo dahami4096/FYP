@@ -13,6 +13,35 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+st.markdown(
+    """
+    <style>
+    [data-testid="stSidebar"] {
+        display: none;
+    }
+    header[data-testid="stHeader"] {
+        display: none;
+    }
+    .block-container {
+        padding-top: 2rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    .back-button {
+        display: inline-block;
+        font-size: 1.8rem;
+        text-decoration: none;
+        color: #444;
+        font-weight: bold;
+        margin-right: 15px;
+        vertical-align: middle;
+        line-height: 1;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # Custom CSS for same-sized buttons
 st.markdown(
     """
@@ -43,7 +72,7 @@ st.markdown(
 
 # Language buttons list
 languages = [
-    "C Programming",
+    "C",
     "Python",
     "C++",
     "C#",
@@ -68,7 +97,7 @@ for i in range(0, len(languages), cols_per_row):
             if st.button(lang):
                 if lang == "Python":
                     st.switch_page("pages/python.py")
-                elif lang == "C Programming":
+                elif lang == "C":
                     st.switch_page("pages/home_c.py")
                 else:
                     st.success(f"You clicked {lang}")
