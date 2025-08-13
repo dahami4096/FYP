@@ -18,7 +18,10 @@ def ask_ai(question, language):
         messages=[
             {"role": "system", "content": f"You are a friendly {language.capitalize()} tutor who explains things in simple ways with examples."},
             {"role": "user", "content": question}
-        ]
+        ],
+        max_tokens=500,  
+        temperature=0.7,  
+        top_p=1,     
     )
     
     return response.choices[0].message.content
