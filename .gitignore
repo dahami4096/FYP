@@ -1,0 +1,23 @@
+# Virtual Environment
+venv/
+.venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE and editor configuration
+.vscode/
+.idea/
+
+# Database file
+*.db
+*.sqlite3
+
+# Environment variables
+.env
+
+# Streamlit specific
+.streamlit/

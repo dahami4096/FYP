@@ -1,0 +1,17 @@
+{
+  "subject": "C Programming",
+  "full_path": [
+    { "topic": "Introduction to C", "level": "beginner" },
+    { "topic": "Variables and Data Types", "level": "beginner" },
+    { "topic": "Basic Input/Output (printf/scanf)", "level": "beginner" },
+    { "topic": "Operators and Expressions", "level": "beginner" },
+    { "topic": "Control Flow (if, else, switch)", "level": "intermediate" },
+    { "topic": "Loops (for, while, do-while)", "level": "intermediate" },
+    { "topic": "Functions", "level": "intermediate" },
+    { "topic": "Arrays and Strings", "level": "intermediate" },
+    { "topic": "Pointers", "level": "advanced" },
+    { "topic": "Memory Management (malloc, free)", "level": "advanced" },
+    { "topic": "Structs and Unions", "level": "advanced" },
+    { "topic": "File I/O", "level": "advanced" }
+  ]
+}

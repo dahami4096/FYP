@@ -1,0 +1,27 @@
+/* --- Login Form Styling for Light Theme --- */
+div[data-testid="stForm"] {
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border: 1px solid #e6e6e6;
+    border-radius: 15px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+}
+
+div[data-testid="stForm"] h1 {
+    text-align: center;
+    color: #1E1E1E;
+}
+
+/* Style the main form submit buttons */
+div[data-testid="stForm"] .stButton button {
+    background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    width: 100%;
+    border: none;
+}
+
+/* Style for the secondary toggle buttons outside the form */
+.stButton button[kind="secondary"] {
+    border: 1px solid #e6e6e6;
+    width: 100%;
+}
