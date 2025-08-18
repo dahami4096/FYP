@@ -94,6 +94,21 @@ if lesson_key not in st.session_state:
         st.session_state[lesson_key] = llm.ask_ai(prompt, language=subject)
 st.markdown(st.session_state[lesson_key])
 
+#coding challenge
+if not review_mode and viewing_index == topic_index:
+    st.subheader("🧑‍💻 Coding Challenge")
+    coding_key = f"coding_{viewing_index}"
+    if coding_key not in st.session_state:
+        challenge_prompt = f"Generate a beginner-level coding challenge for {subject} on '{current_topic}'. Return only the problem statement."
+        st.session_state[coding_key] = llm.ask_ai(challenge_prompt, language=subject)
+    st.markdown(st.session_state[coding_key])
+
+    user_code = st.text_area("Write your code here:", height=200)
+    if st.button("Submit Code", key=f"submit_code_{viewing_index}"):
+        feedback_prompt = f"Here is a student's solution for the challenge: {user_code}\n\nPlease give feedback and say if it's correct."
+        feedback = llm.ask_ai(feedback_prompt, language=subject)
+        st.info(feedback)
+
 if not review_mode and viewing_index == topic_index:
     st.markdown("---")
     st.subheader("🌟 Check Your Understanding")
