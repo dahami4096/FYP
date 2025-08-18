@@ -1,7 +1,7 @@
 import streamlit as st
 import json
 import random
-from modules import llm, db,helpers
+from modules import llm, db, helpers
 
 helpers.set_page_styling()
 
@@ -84,9 +84,9 @@ elif scores["intermediate"] == 3:
         quiz_is_over = True
 
 if quiz_is_over:
-    st.info(f"Beginner Score: {scores['beginner']}/3" if scores["beginner"] != -1 else "")
-    st.info(f"Intermediate Score: {scores['intermediate']}/3" if scores["intermediate"] != -1 else "")
-    st.info(f"Advanced Score: {scores['advanced']}/3" if scores["advanced"] != -1 else "")
+    st.info(f"Beginner Score: {scores['beginner']}/3" if scores["beginner"] != -1 else "Beginner: Not Taken")
+    st.info(f"Intermediate Score: {scores['intermediate']}/3" if scores["intermediate"] != -1 else "Intermediate: Not Taken")
+    st.info(f"Advanced Score: {scores['advanced']}/3" if scores["advanced"] != -1 else "Advanced: Not Taken")
     
     start_index = get_start_index(final_level)
     
@@ -114,7 +114,7 @@ for level in levels:
 
             for i, q in enumerate(questions):
                 key = f"{level}_{i}"
-                st.write(f"**Q{i+1}: {q['question']}**")
+                st.markdown(f"**Q{i+1}: {q['question']}**") 
                 st.session_state.user_answers[key] = st.radio("Options:", q['options'], key=key, index=None)
 
             if st.form_submit_button("Submit Answers"):

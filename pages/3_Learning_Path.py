@@ -1,5 +1,5 @@
 import streamlit as st
-from modules import llm, db,helpers
+from modules import llm, db, helpers
 import json
 
 helpers.set_page_styling()
@@ -63,9 +63,15 @@ for i, topic_name in enumerate(topics):
             st.session_state.viewing_topic_index = i
             st.rerun()
     else:
-        if i < topic_index: st.sidebar.button(f"✅ {topic_name}", disabled=True)
-        elif i == topic_index: st.sidebar.button(f"▶️ {topic_name}", type="primary")
-        else: st.sidebar.button(f"🔒 {topic_name}", disabled=True)
+        if i < topic_index:
+            btn_type = "primary" if i == st.session_state.viewing_topic_index else "secondary"
+            if st.sidebar.button(f"✅ {topic_name}", key=f"topic_{i}", type=btn_type):
+                st.session_state.viewing_topic_index = i
+                st.rerun()
+        elif i == topic_index:
+            st.sidebar.button(f"▶️ {topic_name}", type="primary", key=f"topic_{i}")
+        else:
+            st.sidebar.button(f"🔒 {topic_name}", disabled=True, key=f"topic_{i}")
 
 if failed_assignment:
     st.sidebar.markdown("---")
@@ -88,16 +94,14 @@ if lesson_key not in st.session_state:
         st.session_state[lesson_key] = llm.ask_ai(prompt, language=subject)
 st.markdown(st.session_state[lesson_key])
 
-if not review_mode:
+if not review_mode and viewing_index == topic_index:
     st.markdown("---")
     st.subheader("🌟 Check Your Understanding")
     quiz_key = f"quiz_{viewing_index}"
     if quiz_key not in st.session_state:
         with st.spinner("Creating a quick quiz..."):
-            # Full, detailed prompt
             prompt = f"""
             Generate one multiple-choice question for the {subject} language on the topic '{current_topic}'.
-            
             **INSTRUCTIONS:**
             1. If the question involves a code snippet, embed it directly in the 'question' string using Markdown.
             2. Return ONLY a valid JSON object with keys "question", "options" (a list of 4 strings), and "correct_answer" (the string of the correct option).
@@ -118,12 +122,9 @@ if not review_mode:
 st.markdown("---")
 st.header("💬 AI Tutor Chat")
 st.write(f"Ask any question about **{current_topic}** or general {subject} concepts.")
-
 if 'chat_history' not in st.session_state: st.session_state.chat_history = []
-
 for message in st.session_state.chat_history:
     with st.chat_message(message["role"]): st.markdown(message["content"])
-
 if user_prompt := st.chat_input(f"Ask me about {subject}..."):
     st.session_state.chat_history.append({"role": "user", "content": user_prompt})
     with st.chat_message("user"): st.markdown(user_prompt)
