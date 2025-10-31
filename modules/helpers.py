@@ -5,7 +5,6 @@ def set_page_styling():
     Injects CSS to hide the first two sidebar pages (app and Login)
     and applies any other global styles.
     """
-    # Define the CSS to hide the pages
     hide_pages_css = """
     <style>
     /* Hide the main 'app' page link */
@@ -37,10 +36,8 @@ def load_css(file_path):
 
 def hide_streamlit_ui():
     """
-    Hides Streamlit's Deploy button, toolbar, menu, and footer.
-    Keeps the header bar visible for a clean layout.
+    Hides Streamlit's toolbar, main menu, footer, and header including profile icon and repo link.
     """
-    import streamlit as st
     hide_ui_css = """
     <style>
     /* Hide the entire toolbar including Deploy button */
@@ -49,6 +46,8 @@ def hide_streamlit_ui():
     #MainMenu {visibility: hidden;}
     /* Hide Streamlit footer */
     footer {visibility: hidden;}
+    /* Hide header including profile icon and repo link */
+    header {visibility: hidden;}
     </style>
     """
     st.markdown(hide_ui_css, unsafe_allow_html=True)
