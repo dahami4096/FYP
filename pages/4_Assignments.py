@@ -4,6 +4,7 @@ import json
 import re
 
 helpers.set_page_styling()
+helpers.hide_streamlit_ui() 
 
 LEARNING_PATH_PAGE = "pages/3_Learning_Path.py"
 PROFILE_PAGE = "pages/5_Profile.py"

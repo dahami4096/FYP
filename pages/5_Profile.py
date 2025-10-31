@@ -3,6 +3,7 @@ import json
 from modules import db,helpers
 
 helpers.set_page_styling()
+helpers.hide_streamlit_ui() 
 
 st.set_page_config(page_title="My Profile", page_icon="👤", layout="wide")
 if 'user_id' not in st.session_state:

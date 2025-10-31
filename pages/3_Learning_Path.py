@@ -3,6 +3,7 @@ from modules import llm, db, helpers
 import json
 
 helpers.set_page_styling()
+helpers.hide_streamlit_ui() 
 
 st.set_page_config(page_title="Learning Path", page_icon="📚", layout="wide")
 if 'user_id' not in st.session_state or 'selected_subject' not in st.session_state:

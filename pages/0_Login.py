@@ -3,6 +3,7 @@ from modules import auth, db, helpers
 
 helpers.set_page_styling()
 helpers.hide_sidebar()
+helpers.hide_streamlit_ui() 
 
 def load_page_css():
     with open("assets/style.css") as f:

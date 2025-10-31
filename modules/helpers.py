@@ -34,3 +34,21 @@ def load_css(file_path):
     """Loads a CSS file into the Streamlit app."""
     with open(file_path) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+def hide_streamlit_ui():
+    """
+    Hides Streamlit's Deploy button, toolbar, menu, and footer.
+    Keeps the header bar visible for a clean layout.
+    """
+    import streamlit as st
+    hide_ui_css = """
+    <style>
+    /* Hide the entire toolbar including Deploy button */
+    div[data-testid="stToolbar"] {display: none !important;}
+    /* Hide Streamlit main menu (three dots) */
+    #MainMenu {visibility: hidden;}
+    /* Hide Streamlit footer */
+    footer {visibility: hidden;}
+    </style>
+    """
+    st.markdown(hide_ui_css, unsafe_allow_html=True)

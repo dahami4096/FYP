@@ -4,6 +4,7 @@ import random
 from modules import llm, db, helpers
 
 helpers.set_page_styling()
+helpers.hide_streamlit_ui() 
 
 st.set_page_config(page_title="Placement Quiz", page_icon="🧠", layout="centered")
 if 'user_id' not in st.session_state or 'selected_subject' not in st.session_state:

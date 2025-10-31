@@ -4,6 +4,7 @@ from modules import db, helpers
 helpers.load_css("assets/style.css")
 helpers.set_page_styling()
 helpers.hide_sidebar()
+helpers.hide_streamlit_ui() 
 # --- Page configuration ---
 st.set_page_config(
     page_title="Home", 
